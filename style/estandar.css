@@ -1,0 +1,600 @@
+/* ==============================================
+   VARIABLES GLOBALES DE COLOR
+   ============================================== */
+:root {
+    --color-dark: #222831;         /* Fondo principal oscuro */
+    --color-medium: #393E46;      /* Fondo de tarjetas y sidebar */
+    --color-accent: #948979;      /* Botones primarios, bordes, cabeceras */
+    --color-light: #DFD0B8;       /* Texto principal, botones hover */
+    
+    --text-dark: #222831;         /* Texto sobre fondos claros */
+    --text-light: #DFD0B8;        /* Texto sobre fondos oscuros */
+    
+    --color-danger: #dc3545;      /* Rojo para eliminar */
+    --color-danger-hover: #c82333;
+    
+    --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ==============================================
+   ESTILOS GLOBALES (BODY, H1)
+   ============================================== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--color-dark);
+    color: var(--text-light);
+    line-height: 1.6;
+    margin: 0;
+}
+
+h1 {
+    color: var(--text-light);
+    font-weight: 700;
+    margin-bottom: 2rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 80px;
+    height: 4px;
+    background: var(--color-accent);
+    border-radius: 2px;
+}
+
+/* ==============================================
+   LAYOUT (SIDEBAR Y CONTENIDO PRINCIPAL)
+   ============================================== */
+.sidebar {
+    background-color: var(--color-medium);
+    color: var(--text-light);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 1.5rem;
+    z-index: 1000;
+    width: 250px;
+    transition: all 0.3s ease;
+}
+
+.sidebar .nav-link {
+    color: var(--text-light);
+    padding: 0.75rem 1.25rem;
+    margin: 0.25rem 0.5rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.sidebar .nav-link:hover {
+    background-color: var(--color-accent);
+    color: var(--text-dark);
+}
+
+.sidebar .nav-link.active {
+    background-color: var(--color-accent);
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.sidebar-header {
+    padding: 0 1.25rem 1.5rem 1.25rem;
+    border-bottom: 1px solid var(--color-accent);
+    text-align: center;
+}
+
+.sidebar-header h4 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.main-content {
+    margin-left: 250px;
+    padding: 2rem;
+    transition: margin-left 0.3s ease;
+}
+
+/* Botón para colapsar en móvil */
+.toggle-btn {
+    background-color: var(--color-accent);
+    border: none;
+    color: var(--text-dark);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.toggle-btn:hover {
+    background-color: var(--color-light);
+    transform: scale(1.05);
+}
+
+.toggle-btn:active {
+    transform: scale(0.95);
+}
+
+/* Estilos de sidebar colapsado */
+.sidebar-collapsed .main-content {
+    margin-left: 80px;
+}
+
+.sidebar-collapsed .sidebar {
+    width: 80px;
+}
+
+.sidebar-collapsed .sidebar-text {
+    display: none;
+}
+
+/* ==============================================
+   COMPONENTES (TARJETAS, TABLAS, PAGINADOR)
+   ============================================== */
+.card {
+    background-color: var(--color-medium);
+    border: 1px solid var(--color-accent);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    padding: 1.5rem;
+}
+
+.card-header {
+    background-color: var(--color-accent);
+    color: var(--text-dark);
+    border-radius: 8px 8px 0 0;
+    padding: 1rem;
+    font-weight: 600;
+}
+
+.table {
+    color: var(--text-light);
+}
+
+.table thead th {
+    background-color: var(--color-accent);
+    color: var(--text-dark);
+    border-color: var(--color-accent);
+    font-weight: 600;
+    text-align: center;
+}
+
+.table tbody td {
+    border-color: var(--color-accent);
+    text-align: center;
+}
+
+.table-hover tbody tr:hover {
+    background-color: var(--color-light);
+    color: var(--text-dark);
+}
+
+.paginador .page-item .page-link {
+    color: var(--text-light);
+    background-color: var(--color-dark);
+    border: 1px solid var(--color-accent);
+    margin: 0 5px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.paginador .page-item.disabled .page-link {
+    background-color: var(--color-medium);
+    border-color: var(--color-medium);
+    color: var(--color-accent);
+}
+
+.paginador .page-item.active .page-link {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--text-dark);
+}
+
+.paginador .page-item:not(.disabled) .page-link:hover {
+    background-color: var(--color-light);
+    color: var(--text-dark);
+}
+
+.alert {
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    font-weight: 500;
+    box-shadow: var(--card-shadow);
+}
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+.alert .btn-close {
+    filter: invert(1);
+}
+
+/* ==============================================
+   FORMULARIOS
+   ============================================== */
+.form-label {
+    color: var(--text-light);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.form-control,
+.form-select,
+.status-select {
+    background-color: var(--color-dark);
+    border: 1px solid var(--color-accent);
+    color: var(--text-light);
+    border-radius: 8px;
+    padding: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus,
+.status-select:focus {
+    background-color: var(--color-medium);
+    border-color: var(--color-light);
+    color: var(--text-light);
+    box-shadow: 0 0 8px rgba(223, 208, 184, 0.3);
+    outline: none;
+}
+
+.form-control::placeholder {
+    color: var(--color-accent);
+    opacity: 0.8;
+}
+
+.form-check-label {
+    color: var(--text-light);
+    margin-left: 0.5rem;
+    font-weight: 500;
+}
+
+.form-check-input:checked {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+}
+
+/* ==============================================
+   BOTONES
+   ============================================== */
+.btn-primary {
+    background-color: var(--color-accent);
+    border: none;
+    color: var(--text-dark);
+    border-radius: 8px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-light);
+    color: var(--text-dark);
+    transform: scale(1.05);
+}
+
+.btn-primary:active {
+    transform: scale(0.95);
+}
+
+.btn-secondary {
+    background-color: var(--color-medium);
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    color: var(--text-light);
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-light);
+    color: var(--text-dark);
+    transform: scale(1.05);
+}
+
+.btn-secondary:active {
+    transform: scale(0.95);
+}
+
+.btn-danger {
+    background-color: var(--color-danger);
+    border: none;
+    color: #fff;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+    background-color: var(--color-danger-hover);
+    transform: scale(1.05);
+}
+
+.btn-danger:active {
+    transform: scale(0.95);
+}
+
+
+/* ==============================================
+   ESTILOS ESPECÍFICOS DE PÁGINAS
+   ============================================== */
+
+/* --- login.php --- */
+.body-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--color-dark);
+}
+
+.login-container {
+    text-align: center;
+    padding: 2rem;
+    border: 2px solid var(--color-medium);
+    border-radius: 15px;
+    background-color: var(--color-medium);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 350px;
+    transition: transform 0.3s ease;
+}
+
+.login-container:hover {
+    transform: translateY(-5px);
+}
+
+.login-container .bi-person-circle {
+    font-size: 5rem;
+    color: var(--color-light);
+    margin-bottom: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.login-container:hover .bi-person-circle {
+    color: var(--color-accent);
+}
+
+.login-container h2 {
+    color: var(--color-light);
+    font-weight: 600;
+    margin-bottom: 2rem;
+}
+
+.login-container .form-control {
+    background-color: var(--color-dark);
+    border-color: var(--color-accent);
+}
+
+.login-container .form-control:focus {
+    background-color: var(--color-medium);
+    border-color: var(--color-light);
+}
+
+.login-container .btn-primary {
+    background-color: var(--color-accent);
+}
+
+.login-container .btn-primary:hover {
+    background-color: var(--color-light);
+    color: var(--text-dark);
+}
+
+.login-container .alert {
+    margin-top: 1rem;
+    background-color: var(--color-danger);
+    color: white;
+    border: none;
+}
+
+
+/* --- menua.php --- */
+.welcome-header {
+    background: linear-gradient(135deg, var(--color-accent), var(--color-medium));
+    color: var(--text-light);
+    padding: 2rem 0;
+    margin-bottom: 2.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.welcome-header h1 {
+    font-weight: 700;
+    margin: 0;
+    font-size: 2rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.welcome-header p {
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.menu-container {
+    display: grid;
+    /* --- MODIFICADO: 4 columnas y más ancho --- */
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    max-width: 1400px;
+    /* --- Fin de la modificación --- */
+    margin: 0 auto 3rem;
+    padding: 0 1.5rem;
+}
+
+.menu-block {
+    background: var(--color-medium);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var(--text-light);
+    transition: all 0.3s ease;
+    border: 1px solid var(--color-accent);
+    cursor: pointer;
+    padding: 1rem;
+    text-align: center;
+}
+
+.menu-block:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    background: var(--color-accent);
+    color: var(--text-dark);
+    border-color: var(--color-light);
+}
+
+.menu-block:hover .bi {
+    color: var(--text-dark);
+}
+
+.menu-block .bi {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-light);
+    transition: all 0.3s ease;
+}
+
+.menu-title {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.menu-desc {
+    font-size: 0.9rem;
+    opacity: 0.85;
+    margin-top: 0.5rem;
+}
+
+/* --- AÑADIDO: Contenedor para centrar el botón de logout --- */
+.logout-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;
+    margin-bottom: 3rem; /* Espacio inferior */
+}
+/* Hacemos que el botón de logout no ocupe toda la fila */
+.logout-container .menu-block {
+    width: 100%;
+    max-width: 320px; /* Un ancho similar a un bloque del grid de 4 */
+}
+/* --- Fin de la sección añadida --- */
+
+
+/* --- geclientes.php --- */
+.moto-group {
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--color-accent);
+    border-radius: 8px;
+    padding: 1rem;
+    background-color: var(--color-dark);
+}
+
+.add-moto-btn {
+    background-color: var(--color-accent);
+    border: none;
+    color: var(--text-dark);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.add-moto-btn:hover {
+    background-color: var(--color-light);
+    transform: scale(1.05);
+}
+
+
+/* --- cobrara.php --- */
+.total-section {
+    background-color: var(--color-dark);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    text-align: right;
+    border: 1px solid var(--color-accent);
+}
+
+.total-label {
+    font-weight: 600;
+    margin-right: 1rem;
+}
+
+/* ==============================================
+   MEDIA QUERIES (RESPONSIVE)
+   ============================================== */
+@media (max-width: 992px) {
+    /* En tablets, pasamos a 3 columnas */
+    .menu-container {
+        grid-template-columns: repeat(3, 1fr);
+        max-width: 900px;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 80px;
+    }
+
+    .sidebar-text {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 80px;
+    }
+
+    .sidebar-expanded .sidebar {
+        width: 250px;
+    }
+
+    .sidebar-expanded .sidebar-text {
+        display: inline;
+    }
+
+    .sidebar-expanded .main-content {
+        margin-left: 250px;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+    
+    .status-select {
+        max-width: 100%;
+    }
+    
+    /* En móviles, pasamos a 1 columna */
+    .menu-container {
+        grid-template-columns: 1fr;
+    }
+
+    .welcome-header h1 {
+        font-size: 1.6rem;
+    }
+
+    .menu-block {
+        height: 130px;
+    }
+}
